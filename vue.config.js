@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const port = 7101; // dev port
+const port = 7101; // dev port 必须和基座 base 的entry 入口保持一致
 
 module.exports = {
   /**

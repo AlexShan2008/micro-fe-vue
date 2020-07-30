@@ -14,7 +14,7 @@ let instance = null;
 function render(props = {}) {
   const { container } = props;
   router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/vue' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? '/vue' : '/', // path 需要和基座（base）应用保持一致
     mode: 'history',
     // routes,
   });
@@ -26,14 +26,17 @@ function render(props = {}) {
   }).$mount(container ? container.querySelector('#app') : '#app');
 }
 
+// 解决子项目不能独立访问的问题 根据访问来源，执行不同渲染方法
+if (!window.__POWERED_BY_QIANKUN__) {
+  render();
+}
+
+// 解决基础路径不正确的问题
 if (window.__POWERED_BY_QIANKUN__) { // 动态添加publicPath
   // eslint-disable-next-line no-undef
   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
 }
 
-if (!window.__POWERED_BY_QIANKUN__) {
-  render();
-}
 
 function storeTest(props) {
   props.onGlobalStateChange &&
