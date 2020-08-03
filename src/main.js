@@ -44,20 +44,19 @@ if (window.__POWERED_BY_QIANKUN__) { // 动态添加publicPath
   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
 }
 
-
 function storeTest(props) {
   props.onGlobalStateChange &&
     props.onGlobalStateChange(
-      (value, prev) => console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev),
+      (value, prev) => console.log(`---------VueApp--------- [onGlobalStateChange - ${props.name}]:`, value, prev),
       true,
     );
-  props.setGlobalState &&
-    props.setGlobalState({
-      ignore: props.name,
-      user: {
-        name: props.name,
-      },
-    });
+  // props.setGlobalState &&
+  //   props.setGlobalState({
+  //     ignore: props.name,
+  //     user: {
+  //       name: props.name,
+  //     },
+  //   });
 }
 
 export async function bootstrap() {

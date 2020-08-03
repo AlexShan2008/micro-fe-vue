@@ -13,7 +13,7 @@
     <router-view></router-view>
 
     <div>
-      <h3>Data from Parent App: {{_BASE_STORE}}</h3>
+      <h3>Data from Parent App: <i>{{_BASE_STORE.title}}</i></h3>
     </div>
 
   </div>
