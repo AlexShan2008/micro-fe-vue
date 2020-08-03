@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 import App from './App.vue'
+import routes from './router'
 
 Vue.config.productionTip = false
+
+Vue.use(VueRouter)
+
+Vue.use(Antd);
 
 // new Vue({
 //   render: h => h(App),
@@ -16,7 +23,7 @@ function render(props = {}) {
   router = new VueRouter({
     base: window.__POWERED_BY_QIANKUN__ ? '/vue' : '/', // path 需要和基座（base）应用保持一致
     mode: 'history',
-    // routes,
+    routes,
   });
 
   instance = new Vue({
@@ -59,6 +66,8 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('[vue] props from main framework', props);
+  // receive the global data from base App
+  Vue.prototype._BASE_STORE = props.BASE_STORE
   storeTest(props);
   render(props);
 }

@@ -18,6 +18,7 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   filenameHashing: true,
+  runtimeCompiler: true, 
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   devServer: {
@@ -41,9 +42,9 @@ module.exports = {
       },
     },
     output: {
-      // 把子应用打包成 umd 库格式
+      // Keep the same with the registration in main app
       library: `${name}-[name]`,
-      libraryTarget: 'umd',
+      libraryTarget: 'umd', // 把子应用打包成 umd 库格式
       jsonpFunction: `webpackJsonp_${name}`,
     },
   },

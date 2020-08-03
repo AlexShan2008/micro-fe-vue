@@ -1,17 +1,28 @@
 <template>
   <div id="app">
+    <h2>Vue Demo</h2>
+    <p>Use qiankun and Vue.js as subApp</p>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <div>
+      <router-link to="/">Home</router-link>
+      <a-divider type="vertical" />
+      <router-link to="/about">About</router-link>
+    </div>
+
+    <router-view></router-view>
+
+    <div>
+      <h3>Data from Parent App: {{_BASE_STORE}}</h3>
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   components: {
-    HelloWorld
   }
 }
 </script>
